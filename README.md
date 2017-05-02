@@ -2,8 +2,13 @@
 
 ### Temp Tables
 ```sql
-select *
-    into #auths_2017
+select 
+    au.kcid,
+    au.program,
+    au.status_code,
+    au.start_date,
+    au.expire_date
+into #auths_2017
 from au_master as au
 where
     year(au.start_date) = 2017
@@ -13,7 +18,7 @@ where
 select *
 from #auths_2017 as a17
 where 
-    program in ('3A1','3B1','2X1')
+    a17.program in ('3A1','3B1','2X1')
 
 ;
 
